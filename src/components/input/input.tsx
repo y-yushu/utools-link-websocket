@@ -8,7 +8,7 @@ const Input = (props: any) => {
   };
   useEffect(() => {
     props.getValue(val);
-  });
+  }, [props, val]);
   return (
     <input value={val} onChange={handleOnChange} className="input"></input>
   );

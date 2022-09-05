@@ -6,14 +6,11 @@ import './box.css';
 
 const Box = () => {
   const [val1, setVal1] = useState('');
-  const inputRef: any = useRef(null);
   const [val2, setVal2] = useState('');
   const func = () => {
-    console.log(123);
     message.info('信息提示');
     console.log('val1', val1);
     console.log('val2', val2);
-    console.log(inputRef);
   };
   const str =
     '标签 前端后端httpwebsocket 阿里云代金券领取 腾讯云_2核2G4M_72元/年 华为云_1核1G1M_0.9元';
