@@ -1,0 +1,25 @@
+.box {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 48px auto 48px;
+}
+.box-header {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: auto repeat(3, 56px);
+  grid-column-gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #999;
+}
+.box-center {
+  overflow: auto;
+}
+.box-bottom {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: auto 56px;
+  grid-column-gap: 10px;
+  align-items: center;
+  border-top: 1px solid #999;
+}
