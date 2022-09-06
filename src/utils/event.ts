@@ -8,10 +8,15 @@ export default class event {
    * 注册监听
    * @param name 事件的名称
    * @param func 触发的方法
+   * @param isOnly 是否唯一触发(为true时,其他监听方法都放弃)
    */
-  on(name: string, func: Function) {
+  on(name: string, func: Function, isOnly: boolean = false) {
     const funcs = this.events.get(name) || [];
-    this.events.set(name, [...funcs, func]);
+    if (isOnly) {
+      this.events.set(name, [func]);
+    } else {
+      this.events.set(name, [...funcs, func]);
+    }
   }
   /**
    * 触发监听

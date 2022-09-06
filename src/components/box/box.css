@@ -3,6 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 48px auto 48px;
+  background-color: #fff;
 }
 .box-header {
   padding: 0 10px;
@@ -11,9 +12,13 @@
   grid-column-gap: 10px;
   align-items: center;
   border-bottom: 1px solid #999;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .box-center {
-  overflow: auto;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: #f9f9f9;
 }
 .box-bottom {
   padding: 0 10px;
@@ -22,4 +27,6 @@
   grid-column-gap: 10px;
   align-items: center;
   border-top: 1px solid #999;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }

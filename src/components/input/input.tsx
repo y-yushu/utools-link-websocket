@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import './input.css';
 
 const Input = (props: any) => {
-  const [val, setVal] = useState(props.value || '');
+  const [val, setVal] = useState(props?.value || '');
   const handleOnChange = (event: {target: {value: string}}) => {
     setVal(event.target.value);
   };
@@ -10,7 +10,11 @@ const Input = (props: any) => {
     props.getValue(val);
   }, [props, val]);
   return (
-    <input value={val} onChange={handleOnChange} className="input"></input>
+    <input
+      className="input"
+      value={val}
+      onChange={handleOnChange}
+      placeholder={props?.placeholder}></input>
   );
 };
 

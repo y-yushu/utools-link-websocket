@@ -7,6 +7,7 @@ enum titles {
   success = '连接成功',
   break = '连接断开',
   error = '数据异常',
+  linkerror = '连接失败',
   sendmsg = '发送消息',
   onmsg = '接收消息',
   nolink = '长连接未连接',
@@ -21,6 +22,10 @@ export default class websocket {
   output: Function = () => {};
   // 连接
   link(url: string) {
+    if (!/^(wss?:\/\/)[^]*/.test(url)) {
+      Message.error('请输入完整的websocket地址');
+      return;
+    }
     this.ws = new WebSocket(url);
     // 打开
     this.ws.onopen = () => {
@@ -44,20 +49,21 @@ export default class websocket {
     };
     // 关闭
     this.ws.onclose = () => {
-      this.isopen = false;
-      const message: entity_message = {
-        time: new Date(),
-        title: titles.break,
-        color: enum_colors.error,
-      };
-      this.output(message);
+      if (this.isopen) {
+        this.isopen = false;
+        const message: entity_message = {
+          time: new Date(),
+          title: titles.break,
+          color: enum_colors.error,
+        };
+        this.output(message);
+      }
     };
     // 错误
-    this.ws.onerror = (err: string) => {
+    this.ws.onerror = () => {
       const message: entity_message = {
         time: new Date(),
-        title: titles.error,
-        msg: err,
+        title: titles.linkerror,
         color: enum_colors.error,
       };
       this.output(message);

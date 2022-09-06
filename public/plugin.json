@@ -1,11 +1,14 @@
 {
   "main": "index.html",
   "logo": "logo192.png",
+  "pluginSetting": {
+    "single": false
+  },
   "features": [
     {
-      "code": "hello",
-      "explain": "hello world",
-      "cmds": ["hello", "你好"]
+      "code": "WebSocket",
+      "explain": "连接websocket",
+      "cmds": ["websocket", "socket", "长连接", "连接", "ws", "wss"]
     }
   ]
 }
