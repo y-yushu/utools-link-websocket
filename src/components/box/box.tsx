@@ -1,5 +1,7 @@
 import {useState, useRef, useEffect} from 'react';
+import copy from 'copy-to-clipboard';
 import moment from 'moment';
+import {message as Message} from 'antd';
 // 组件
 import YysInput from '../input/input';
 import YysButton from '../button/button';
@@ -60,6 +62,13 @@ const Item = () => {
         dom.current.scrollTop += 1000;
       }
     }, [lists]);
+    // 一键复制功能
+    const copyValue = (msg?: string) => {
+      if (msg) {
+        copy(msg);
+        Message.info('复制成功');
+      }
+    };
     return (
       <div ref={dom} className="box-center">
         {lists.map((item: entity_message, i: number) => {
@@ -69,7 +78,14 @@ const Item = () => {
                 {item.title + ' ' + getTime(item.time)}
               </li>
               {item.msg ? (
-                <li style={{listStyle: 'none'}}>{item.msg}</li>
+                <li style={{listStyle: 'none'}}>
+                  {item.msg}
+                  <span
+                    className="copy-span"
+                    onClick={() => copyValue(item.msg)}>
+                    {'复制'}
+                  </span>
+                </li>
               ) : null}
             </div>
           );
